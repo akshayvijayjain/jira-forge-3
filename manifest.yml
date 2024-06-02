@@ -1,0 +1,27 @@
+modules:
+  jira:uiModifications:
+    - key: chat-1-hello-world-ui-modifications
+      title: chat-1
+      resource: uiModificationsMain
+  trigger:
+    - key: chat-1-hello-world-ui-modifications-install
+      function: main
+      events:
+        - avi:forge:installed:app
+  function:
+    - key: main
+      handler: index.run
+resources:
+  - key: uiModificationsMain
+    path: static/hello-world/build
+permissions:
+  scopes:
+    - manage:jira-configuration
+    - read:jira-user
+    - read:jira-work
+    - write:jira-work
+
+app:
+  runtime:
+    name: nodejs18.x
+  id: ari:cloud:ecosystem::app/663140cc-df95-4298-bcbc-c8e3de8359fc
